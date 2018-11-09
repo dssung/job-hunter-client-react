@@ -1,10 +1,22 @@
 import apiClient from '../../common/ApiClient';
-export const GET_ALL_MY_JOBS_SUCCESS = 'GET_ALL_MY_JOBS_SUCCESS';
-export const SHOW_JOB_MODAL = 'SHOW_JOB_MODAL';
+import * as types from './actionTypes';
 
 
-export function showJobModal(){
-    return {type: SHOW_JOB_MODAL, jobModalIsOpen: true}
+//UI
+export function openJobModal(job){
+    let modal = {
+        jobModalIsOpen: true,
+        currJob: job
+    }
+    return {type: types.OPEN_JOB_MODAL, modal}
+}
+
+export function closeJobModal(){
+    return {type: types.CLOSE_JOB_MODAL, jobModalIsOpen: false}
+}
+
+export function openEditDetails(){
+    return {type: types.OPEN_EDITABLE, editableIsOpen: true}
 }
 
 //API calls
@@ -20,5 +32,5 @@ export function getAllMyJobs(){
 }
 
 export function getAllMyJobsSuccess(jobs){
-    return { type: GET_ALL_MY_JOBS_SUCCESS, jobs};
+    return { type: types.GET_ALL_MY_JOBS_SUCCESS, jobs};
 }

@@ -5,7 +5,7 @@ import {hot} from 'react-hot-loader';
 import '../style.scss';
 
 class AddJobTile extends React.Component {
-	
+
 	render(){
 		return (
 			<Card className = 'add-job-tile'>

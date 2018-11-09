@@ -1,24 +1,22 @@
 import {connect} from 'react-redux';
 import JobsGridComponent from '../components/JobsGrid';
-import {showJobModal} from '../duck/actions';
+import {openJobModal} from '../duck/actions';
 
 const mapStateToProps = store => {
-    return {
-        jobs: store.myJobsPage.myJobs,
-        jobModalIsOpen: store.myJobsPage.myJobsGrid.jobModalIsOpen
-    }
+	return {
+		jobs: store.myJobsPage.myJobs,
+		jobModalIsOpen: store.myJobsPage.myJobsGrid.jobModalIsOpen,
+		currJob: store.myJobsPage.myJobsGrid.currJob
+	}
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onJobTileClick: () => {
-            dispatch(showJobModal())
-        }
-    }
+	return {
+		handleJobTileClick: (job) => {
+				dispatch(openJobModal(job))
+		}
+	}
 }
 
-const JobsGrid = connect(mapStateToProps, mapDispatchToProps)(JobsGridComponent)
-
-export default JobsGrid;
-
+export default connect(mapStateToProps, mapDispatchToProps)(JobsGridComponent);
 

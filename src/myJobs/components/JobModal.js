@@ -1,22 +1,21 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-import {Modal, Paper, Select, MenuItem, Button, Icon} from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
-import ClearIcon from '@material-ui/icons/Clear';
+import {Modal, Paper} from '@material-ui/core';
+import JobDetails from '../containers/JobDetails';
 
 class JobModal extends React.Component{
-	constructor(props){
-		super(props);
-	}
+	render(){
+		if (this.props.job !== null){	
+			return (
+				<Modal open = {this.props.open}>
+					<Paper>
+							<JobDetails job = {this.props.job}/>
+					</Paper>
+				</Modal>
+			);
+		}
 
-	render(){		
-		return (
-			<Modal open = {this.props.open}>
-				<Paper>
-                
-				</Paper>
-			</Modal>
-		);  
+		return <></>
 	}
 }
 
