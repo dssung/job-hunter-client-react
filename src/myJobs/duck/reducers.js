@@ -4,7 +4,8 @@ import * as types from './actionTypes';
 const initialState = {
 	jobModalIsOpen: false,
 	currJob: null,
-	editableIsOpen: false
+	editableIsOpen: false,
+	addModalIsOpen: false,
 }
 
 function myJobsGrid(state = initialState, action){
@@ -28,6 +29,18 @@ function myJobsGrid(state = initialState, action){
 				editableIsOpen: action.editableIsOpen
 			}
 		
+		case types.OPEN_ADD_MODAL:
+			return {
+				...state,
+				addModalIsOpen: action.addModalIsOpen
+			}
+		
+		case types.CLOSE_ADD_MODAL:
+			return {
+				...state,
+				addModalIsOpen: action.addModalIsOpen
+			}
+
 		default:
 			return state;
 	}
@@ -35,7 +48,7 @@ function myJobsGrid(state = initialState, action){
 
 function myJobs(state = [], action){
 	switch(action.type){
-		case types.GET_ALL_MY_JOBS_SUCCESS:
+		case types.GET_MY_JOBS_SUCCESS:
 			return action.jobs
 		
 		default:

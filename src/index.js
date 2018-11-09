@@ -5,14 +5,14 @@ import {createStore, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from './rootReducer';
-import {getAllMyJobs} from './myJobs/duck/actions';
+import {getMyJobs} from './myJobs/duck/actions';
 
 const store = createStore(
     reducer,
     applyMiddleware(thunk)
 )
 store.subscribe(() => console.log(store.getState()));
-store.dispatch(getAllMyJobs());
+store.dispatch(getMyJobs());
 
 ReactDOM.render(
 

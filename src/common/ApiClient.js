@@ -6,21 +6,21 @@ const apiClient = axios.create({
 });
 
 class ApiClient {
-    static getAllMyJobs() {
-        return apiClient.get('/jobs')
-    }
+	static getMyJobs() {
+		return apiClient.get('/jobs')
+	}
 
-    static createJob(newJob){
-        return apiClient.post('/jobs', newJob);
-    }
+	static createJob(newJob){
+		return apiClient.post('/jobs', newJob);
+	}
 
-    static updateJob(id){
-        return apiClient.put(`/jobs/${id}`);
-    }
+	static updateJob(id){
+		return apiClient.put(`/jobs/${id}`);
+	}
 
-    static deleteJob(id){
-        return apiClient.delete(`/jobs/${id}`);
-    }
+	static deleteJob(id){
+		return apiClient.delete(`/jobs/${id}`);
+	}
 }
 
 export default ApiClient

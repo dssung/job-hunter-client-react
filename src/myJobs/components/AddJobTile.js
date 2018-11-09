@@ -8,7 +8,9 @@ class AddJobTile extends React.Component {
 
 	render(){
 		return (
-			<Card className = 'add-job-tile'>
+			<Card className = 'add-job-tile'
+				onClick = {this.props.onClick}
+			>
 				<Button 
 					mini variant='fab' 
 					color='primary' 
