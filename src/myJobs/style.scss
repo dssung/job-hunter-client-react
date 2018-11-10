@@ -16,3 +16,60 @@
     align-items: center;
 }
 
+body{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+//tile
+
+.tile-title{
+    margin-bottom: 2%;
+}
+
+.tile-subtitle{
+    font-size: 13px;
+}
+
+.tile-body {
+    display: grid;
+    grid-template-rows: 80% 20%; 
+}
+
+.tile-footer {
+    position: relative;
+    left: 10%;
+}
+
+
+//Modal
+.title {
+    color: white;
+}
+
+.job-detail-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.edit-button {
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.modal-button {
+    flex-grow: 1;
+}
+

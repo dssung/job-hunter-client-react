@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Button, Paper, TextField, MenuItem} from '@material-ui/core';
+import {Modal, CardHeader, CardActions, CardContent, Button, Card, TextField, MenuItem} from '@material-ui/core';
 import {hot} from 'react-hot-loader';
 
 class AddModal extends React.Component {
@@ -35,71 +35,81 @@ class AddModal extends React.Component {
 		let updateJob = this.state.job;
 		updateJob[name] = newValue;
 		
-		this.setState({
-			job: updateJob
-		});
+		this.setState({job: updateJob});
 	}
 
 	render(){
 		let job = this.state.job;
 		return (
 			<>
-				<Modal open = {this.props.open}>
-					<Paper>
-						<h2>
-							Add New Job
-						</h2>
-
-						<TextField
-							label = 'Company'
-							margin = 'normal'
-							value = {job.company}
-							onChange = {this.handleChange.bind(this, 'company')}
+				<Modal 
+					open = {this.props.open}
+					style = {{top: '20%', left: '5%', right: '5%', margin: 'auto', alignItems:'center', justifyContent: 'center'}}
+				>			
+					<Card>
+						<CardHeader
+							style = {{backgroundColor: '#3f51b5'}}
+							title = {<div className = 'title'> Add New Job </div>}
 						/>
 
-						<TextField
-							label = 'Position'
-							margin = 'normal'
-							value = {job.position}
-							onChange = {this.handleChange.bind(this, 'position')}
-						/>
+						<CardContent>
+							<div className = 'modal-body'>
+								<TextField
+									label = 'Company'
+									margin = 'normal'
+									value = {job.company}
+									onChange = {this.handleChange.bind(this, 'company')}
+								/>
 
-						<TextField
-							label = 'Location'
-							margin = 'normal'
-							value = {job.location}
-							onChange = {this.handleChange.bind(this, 'location')}
-						/>
+								<TextField
+									label = 'Position'
+									margin = 'normal'
+									value = {job.position}
+									onChange = {this.handleChange.bind(this, 'position')}
+								/>
 
-						<TextField
-							select
-							label='Status'
-							margin='normal'
-							value = {job.status}
-							onChange = {this.handleChange.bind(this, 'status')}
-						>
-								<MenuItem value = {'INTERESTED'}>Interested</MenuItem>
-								<MenuItem value = {'APPLIED'}>Applied</MenuItem>
-								<MenuItem value = {'IN_PROGRESS'}>In Progress</MenuItem>
-								<MenuItem value = {'REJECTED'}>Rejected</MenuItem>
-						</TextField>
+								<TextField
+									label = 'Location'
+									margin = 'normal'
+									value = {job.location}
+									onChange = {this.handleChange.bind(this, 'location')}
+								/>
 
-						<Button 
-							variant='contained' 
-							color='primary'
-							onClick = {() => this.props.handleAddClick(this.state.job, this.clearFields.bind(this))}
-						>
+								<TextField
+									select
+									label='Status'
+									margin='normal'
+									value = {job.status}
+									onChange = {this.handleChange.bind(this, 'status')}
+								>
+										<MenuItem value = {'INTERESTED'}>Interested</MenuItem>
+										<MenuItem value = {'APPLIED'}>Applied</MenuItem>
+										<MenuItem value = {'IN_PROGRESS'}>In Progress</MenuItem>
+										<MenuItem value = {'REJECTED'}>Rejected</MenuItem>
+								</TextField>
+							</div>
+						</CardContent>
+
+						<CardActions>
+								<Button 
+								variant='contained' 
+								color='primary'
+								className = 'modal-button'
+								onClick = {() => this.props.handleAddClick(this.state.job, this.clearFields.bind(this))}
+							>
 							Add Job
-						</Button>
+							</Button>
 
-						<Button 
-							variant='contained' 
-							color='secondary'
-							onClick = {() => this.props.handleCancelClick(this.clearFields.bind(this))}
-						>
-							Cancel
-						</Button>
-					</Paper>
+							<Button 
+									variant='contained' 
+									color='secondary'
+									className = 'modal-button'
+									onClick = {() => this.props.handleCancelClick(this.clearFields.bind(this))}
+								>
+									Cancel
+							</Button>
+						</CardActions>
+					</Card>
 				</Modal>
 			</>
 		);

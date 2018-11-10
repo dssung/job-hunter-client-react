@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import JobDetails from '../components/JobDetails';
-import {closeJobModal, openEditJobDetails} from '../duck/actions';
+import {closeJobModal, openEditJobDetails, saveAndUpdate} from '../duck/actions';
 
 const mapStateToProps = store => {
 	return {
@@ -15,6 +15,17 @@ const mapDispatchToProps = dispatch => {
 
 		handleEditClick: () => {
 			dispatch(openEditJobDetails())
+		},
+
+		handleSelectChange: (job) => {
+			let newValue = event.target.dataset.value
+			
+			let newJob = {
+				...job,
+				status: newValue
+			}
+
+			dispatch(saveAndUpdate(newJob._id, newJob));
 		}
 	}
 }
