@@ -1,1 +1,1 @@
-# job-hunter-react-client
+# Job Hunter Client - React
