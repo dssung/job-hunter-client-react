@@ -4,12 +4,43 @@ import * as types from './actionTypes';
 const initialState = {
 	jobModalIsOpen: false,
 	currJob: null,
-	editableIsOpen: false,
+	editJobDetailsIsOpen: false,
 	addModalIsOpen: false,
 }
 
 function myJobsGrid(state = initialState, action){
 	switch(action.type){
+		case types.CLOSE_ADD_MODAL:
+			return {
+				...state,
+				addModalIsOpen: action.addModalIsOpen
+			}
+
+		case types.CLOSE_EDIT_JOB_DETAILS:
+			return{
+				...state,
+				editJobDetailsIsOpen: action.editJobDetailsIsOpen
+			}
+		
+		case types.CLOSE_JOB_MODAL:
+			return {
+				...state,
+				jobModalIsOpen: action.jobModalIsOpen,
+				editJobDetailsIsOpen: action.editJobDetailsIsOpen
+			}
+
+		case types.OPEN_ADD_MODAL:
+			return {
+				...state,
+				addModalIsOpen: action.addModalIsOpen
+			}
+
+		case types.OPEN_EDIT_JOB_DETAILS:
+		return{
+			...state,
+			editJobDetailsIsOpen: action.editJobDetailsIsOpen
+		}
+		
 		case types.OPEN_JOB_MODAL:
 			return {
 				...state,
@@ -17,28 +48,11 @@ function myJobsGrid(state = initialState, action){
 				currJob: action.modal.currJob
 			}
 
-		case types.CLOSE_JOB_MODAL:
+		case types.SAVE_JOB_DETAILS:
 			return {
 				...state,
-				jobModalIsOpen: action.jobModalIsOpen
-			}
-
-		case types.OPEN_EDITABLE:
-			return{
-				...state,
-				editableIsOpen: action.editableIsOpen
-			}
-		
-		case types.OPEN_ADD_MODAL:
-			return {
-				...state,
-				addModalIsOpen: action.addModalIsOpen
-			}
-		
-		case types.CLOSE_ADD_MODAL:
-			return {
-				...state,
-				addModalIsOpen: action.addModalIsOpen
+				editJobDetailsIsOpen: action.editJobDetailsIsOpen,
+				currJob: action.currJob
 			}
 
 		default:

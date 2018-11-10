@@ -1,8 +1,7 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-import {Modal, Paper, Select, MenuItem, Button, Icon} from '@material-ui/core';
+import {Select, MenuItem, Button, Icon} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-import ClearIcon from '@material-ui/icons/Clear';
 
 class JobDetails extends React.Component{
 	constructor(props){
@@ -24,16 +23,6 @@ class JobDetails extends React.Component{
 					onClick = {this.props.handleEditClick}
 				>
 					<Icon><EditIcon/></Icon>
-				</Button>
-
-				<Button 
-					mini 
-					variant = 'fab' 
-					color = 'secondary' 
-					aria-label = 'Close'
-					onClick = {this.props.handleCloseClick}
-				>
-					<Icon><ClearIcon/></Icon>
 				</Button>
 
 				<h5><b>{position}</b></h5>

@@ -14,12 +14,12 @@ class ApiClient {
 		return apiClient.post('/jobs', newJob);
 	}
 
-	static updateJob(id){
-		return apiClient.put(`/jobs/${id}`);
+	static saveJob(_id, updatedJob){
+		return apiClient.put(`/jobs/${_id}`, updatedJob);
 	}
 
-	static deleteJob(id){
-		return apiClient.delete(`/jobs/${id}`);
+	static deleteJob(_id){
+		return apiClient.delete(`/jobs/${_id}`);
 	}
 }
 

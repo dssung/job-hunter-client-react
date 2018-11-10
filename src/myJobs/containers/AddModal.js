@@ -4,7 +4,8 @@ import {closeAddModal, createJobAndUpdate, getMyJobs} from '../duck/actions';
 
 const mapStateToProps = store => {
 	return {
-		addJob: store.myJobsPage.myJobsGrid.addJob
+		addJob: store.myJobsPage.myJobsGrid.addJob,
+		open: store.myJobsPage.myJobsGrid.addModalIsOpen
 	}
 }
 

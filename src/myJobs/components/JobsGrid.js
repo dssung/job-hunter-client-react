@@ -2,7 +2,7 @@ import React from 'react';
 import {hot} from 'react-hot-loader';
 import JobTile from './JobTile';
 import AddJobTile from './AddJobTile';
-import JobModal from './JobModal';
+import JobModal from '../containers/JobModal';
 import AddModal from '../containers/AddModal';
 import '../style.scss';
 
@@ -35,14 +35,8 @@ class JobsGrid extends React.Component{
 						/>		
 				</div>
 				
-				<JobModal
-						job = {this.props.currJob}
-						open  = {this.props.jobModalIsOpen}
-				/>
-			
-				
-				<AddModal
-					open = {this.props.addModalIsOpen}/>
+				<JobModal/>
+				<AddModal/>
 			</>
 		);  
 	} 
