@@ -34,6 +34,18 @@ export function closeEditJobDetails(){
 	return {type: types.CLOSE_EDIT_JOB_DETAILS, editJobDetailsIsOpen: false}
 }
 
+export function addActivity(){
+	return {type: types.ADD_ACTIVITY, addActivityIsOpen: false}
+}
+
+export function openAddActivity(){
+	return {type: types.OPEN_ADD_ACTIVITY, addActivityIsOpen: true}
+}
+
+export function closeAddActivity(){
+	return {type: types.CLOSE_ADD_ACTIVITY, addActivityIsOpen: false}
+}
+
 //API calls
 //GET
 export function getMyJobs(){
@@ -84,7 +96,7 @@ export function saveAndUpdate(_id, updatedJob){
 }
 
 export function saveJobSuccess(updatedJob){
-  return {type: types.SAVE_JOB_DETAILS, editJobDetailsIsOpen: false, currJob: updatedJob}
+  return {type: types.SAVE_JOB_DETAILS, editJobDetailsIsOpen: false, addActivityIsOpen: false, currJob: updatedJob}
 }
 
 //DELETE AND GET

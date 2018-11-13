@@ -1,6 +1,6 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-import {CardContent, Select, MenuItem, Button, Icon} from '@material-ui/core';
+import {CardContent, Select, MenuItem, Button, Icon, OutlinedInput, Chip, Divider} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
 class JobDetails extends React.Component{
@@ -8,13 +8,37 @@ class JobDetails extends React.Component{
 		super(props);
 	}
 
+	renderSkillChips(){
+		let skills = this.props.job.skills;
+		let skillChips = [];
+		for (let i in skills){
+			let chip = <Chip
+									key = {i}
+									className = 'chip'
+									variant = 'outlined'
+									color = 'primary'
+									label= {skills[i]}
+								/>
+			skillChips.push(chip);
+		}
+
+		return skillChips;
+	}
+
 	render(){
-		let {company, position, location, status}  = this.props.job;
+		let {company, position, location, status, notes, link}  = this.props.job;
 		
 		return (
 			<CardContent>
 				<div className = 'job-detail-header'>
-					<h2>{company}</h2>
+					<div>
+						<h3>
+							{company}
+							<br/>
+							<small>{position}</small><br/>
+							<small className = 'location'><i>{location}</i></small>
+						</h3>
+					</div>
 					<Button 
 						mini 
 						variant = 'fab' 
@@ -27,19 +51,31 @@ class JobDetails extends React.Component{
 					</Button>
 				</div>
 
+				<Divider/>
+
 				<div className = 'modal-body'>
-					<p>
-						{position}
-						<br/>
-						{location}
-					</p>
+
+					<div className = 'notes'>
+						<h4>Notes: </h4>
+						<p>{notes}</p>
+					</div>
 
 					<br/>
+					
+					<div className = 'chips-container'>
+						{this.renderSkillChips()}
+					</div>
+				
 					<br/>
 
 					<Select 
 						onChange = {() => this.props.handleSelectChange(this.props.job)} 
-						value = {status}>
+						value = {status}
+						input={
+              <OutlinedInput
+                labelWidth = {0}
+              />}
+						>
 						<MenuItem value = {'INTERESTED'}>Interested</MenuItem>
 						<MenuItem value = {'APPLIED'}>Applied</MenuItem>
 						<MenuItem value = {'IN_PROGRESS'}>In Progress</MenuItem>

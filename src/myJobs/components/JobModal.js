@@ -4,7 +4,7 @@ import {Modal, Card, CardHeader, Button, Icon} from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import JobDetails from '../containers/JobDetails';
 import EditJobDetails from '../containers/EditJobDetails';
-import JobActivityLog from '../components/JobActivityLog';
+import JobActivityLog from '../containers/JobActivityLog';
 
 class JobModal extends React.Component {
 	renderJobDetails(){
@@ -22,7 +22,7 @@ class JobModal extends React.Component {
 			return (
 				<Modal 
 					open = {this.props.open}
-					style = {{top: '10%', left: '5%', right: '5%', margin: 'auto', alignItems:'center', justifyContent: 'center'}}
+					style = {{top: '5%', left: '5%', right: '5%', margin: 'auto', alignItems:'center', justifyContent: 'center'}}
 				>
 					<Card>
 						<CardHeader

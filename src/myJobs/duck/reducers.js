@@ -6,6 +6,7 @@ const initialState = {
 	currJob: null,
 	editJobDetailsIsOpen: false,
 	addModalIsOpen: false,
+	addActivityIsOpen: false
 }
 
 function myJobsGrid(state = initialState, action){
@@ -52,7 +53,20 @@ function myJobsGrid(state = initialState, action){
 			return {
 				...state,
 				editJobDetailsIsOpen: action.editJobDetailsIsOpen,
+				addActivityIsOpen: action.addActivityIsOpen,
 				currJob: action.currJob
+			}
+
+		case types.OPEN_ADD_ACTIVITY:
+			return {
+				...state,
+				addActivityIsOpen: action.addActivityIsOpen
+			}
+
+		case types.CLOSE_ADD_ACTIVITY:
+			return {
+				...state,
+				addActivityIsOpen: action.addActivityIsOpen
 			}
 
 		default:

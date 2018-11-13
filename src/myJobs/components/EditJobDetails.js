@@ -17,6 +17,10 @@ class EditJobDetails extends React.Component{
 		if (name === 'status')
 			newValue = event.target.dataset.value;
 
+		if (name === 'skills'){
+			newValue = event.target.value.split(',');
+		}
+
 		let updateJob = this.state.job;
 		updateJob[name] = newValue;
 		
@@ -26,14 +30,11 @@ class EditJobDetails extends React.Component{
 	}
 
 	render(){
-		let {company, position, location, status, _id}  = this.state.job;
+		let {company, position, location, notes, skills, applied_date, status, _id}  = this.state.job;
 
 		return (
 			<CardContent>
-				<div className = 'job-detail-header'>
-					<h2><b>Update Job</b></h2>
-				</div>
-				
+
 				<div className = 'modal-body'>
 					<TextField
 						label = 'Company'
@@ -50,10 +51,28 @@ class EditJobDetails extends React.Component{
 					/>
 
 					<TextField
-						label = 'location'
+						label = 'Location'
 						value = {location}
 						margin = 'normal'
 						onChange = {this.handleChange.bind(this, 'location')}
+					/>
+
+					<TextField
+						multiline
+						label = 'Notes'
+						value = {notes}
+						variant="outlined"
+						margin = 'normal'
+						rows = {3}
+						onChange = {this.handleChange.bind(this, 'notes')}>
+					</TextField>
+
+					<TextField
+						label = 'Skills'
+						value = {skills}
+						margin = 'normal'
+						helperText = 'Separate by commas'
+						onChange = {this.handleChange.bind(this, 'skills')}
 					/>
 
 					<TextField
