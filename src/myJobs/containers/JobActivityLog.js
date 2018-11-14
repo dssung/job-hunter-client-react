@@ -1,19 +1,27 @@
 import {connect} from 'react-redux';
 import JobActivityLog from '../components/JobActivityLog';
-import {openAddActivity} from '../duck/actions';
+import {openUpdateActivity, deleteActivityAndUpdate} from '../duck/actions';
 
 const mapStateToProps = store => {
 	return {
     job: store.myJobsPage.myJobsGrid.currJob,
-    addActivityIsOpen: store.myJobsPage.myJobsGrid.addActivityIsOpen
+    updateActivityIsOpen: store.myJobsPage.myJobsGrid.updateActivityIsOpen
   }
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
     handleAddClick: () => {
-			dispatch(openAddActivity())
+			dispatch(openUpdateActivity(null, null))
 		},
+		
+		handleDeleteClick: (job, activity) => {
+			dispatch(deleteActivityAndUpdate(job, activity))
+		},
+
+		handleEditClick: (job, activity) => {
+			dispatch(openUpdateActivity(job, activity))
+		}
 	}
 }
 

@@ -92,4 +92,16 @@ small{
     font-weight: normal;
 }
 
+.activity-log-body{ 
+    display: block;
+    height: 60vh;
+    overflow: scroll;
+}
+
+
+.panel-container{
+    display: grid;
+    grid-template-columns: 30% 70%
+
+}
 

@@ -21,7 +21,7 @@ export function closeAddModal(){
 
 //JobModal Actions
 export function closeJobModal(){
-  return {type: types.CLOSE_JOB_MODAL, jobModalIsOpen: false, editJobDetailsIsOpen: false}
+  return {type: types.CLOSE_JOB_MODAL, jobModalIsOpen: false, editJobDetailsIsOpen: false, updateActivityIsOpen: false}
 }
 
 //JobDetails Actions
@@ -34,16 +34,22 @@ export function closeEditJobDetails(){
 	return {type: types.CLOSE_EDIT_JOB_DETAILS, editJobDetailsIsOpen: false}
 }
 
-export function addActivity(){
-	return {type: types.ADD_ACTIVITY, addActivityIsOpen: false}
+export function UpdateActivity(){
+	return {type: types.ADD_ACTIVITY, updateActivityIsOpen: false}
 }
 
-export function openAddActivity(){
-	return {type: types.OPEN_ADD_ACTIVITY, addActivityIsOpen: true}
+export function openUpdateActivity(job, activity){
+	if (job == null){
+		console.log('job is null');
+		return {type: types.OPEN_UPDATE_ACTIVITY, updateActivityIsOpen: true, updateActivity: null}
+	} else {
+		console.log('job is not null');
+		return {type: types.OPEN_UPDATE_ACTIVITY, updateActivityIsOpen: true, updateActivity: [job, activity]}
+	}
 }
 
-export function closeAddActivity(){
-	return {type: types.CLOSE_ADD_ACTIVITY, addActivityIsOpen: false}
+export function closeUpdateActivity(){
+	return {type: types.CLOSE_UPDATE_ACTIVITY, updateActivityIsOpen: false}
 }
 
 //API calls
@@ -84,8 +90,8 @@ export function createJobSuccess(){
 //PUT AND GET
 export function saveAndUpdate(_id, updatedJob){
 	return function(dispatch){
-		return apiClient.saveJob(_id, updatedJob).then(response => {
-				dispatch(saveJobSuccess(updatedJob));
+		return apiClient.saveJob(_id, updatedJob).then(res => {
+				dispatch(saveJobSuccess(res.data));
 			})
 			.catch(error => {
 					throw(error);
@@ -96,7 +102,7 @@ export function saveAndUpdate(_id, updatedJob){
 }
 
 export function saveJobSuccess(updatedJob){
-  return {type: types.SAVE_JOB_DETAILS, editJobDetailsIsOpen: false, addActivityIsOpen: false, currJob: updatedJob}
+  return {type: types.SAVE_JOB_DETAILS, editJobDetailsIsOpen: false, updateActivityIsOpen: false, currJob: updatedJob}
 }
 
 //DELETE AND GET
@@ -115,4 +121,38 @@ export function deleteJobAndUpdate(_id){
 
 export function deleteJobSuccess(){
   return {type: types.CLOSE_JOB_MODAL, jobModalIsOpen: false, editJobDetailsIsOpen: false}
+}
+
+export function deleteActivityAndUpdate(job, activity){
+	return function(dispatch){
+		return apiClient.deleteActivity(job._id, activity._id).then(res=> {
+			dispatch(deleteActivitySuccess(res.data));
+		})
+		.catch(error => {
+			throw(error);
+		}).then(()=>{
+			dispatch(getMyJobs());
+		});
+	}
+}
+
+export function deleteActivitySuccess(updatedJob){
+	return {type: types.DELETE_ACTIVITY_SUCCESS, currJob: updatedJob}
+}
+
+export function editActivityAndUpdate(jobId, updatedActivity){
+	return function(dispatch){
+		return apiClient.editActivity(jobId, updatedActivity._id, updatedActivity).then(res => {
+			dispatch(editActivitySuccess(res.data));
+		})
+		.catch(error => {
+			throw(error);
+		}).then(()=>{
+			dispatch(getMyJobs());
+		});
+	}
+}
+
+export function editActivitySuccess(updatedJob){
+	return {type: types.EDIT_ACTIVITY_SUCCESS, currJob: updatedJob, updateActivityIsOpen: false, updateActivity: null}
 }

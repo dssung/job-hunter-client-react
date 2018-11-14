@@ -6,7 +6,8 @@ const initialState = {
 	currJob: null,
 	editJobDetailsIsOpen: false,
 	addModalIsOpen: false,
-	addActivityIsOpen: false
+	updateActivityIsOpen: false,
+	updateActivity: null
 }
 
 function myJobsGrid(state = initialState, action){
@@ -27,7 +28,8 @@ function myJobsGrid(state = initialState, action){
 			return {
 				...state,
 				jobModalIsOpen: action.jobModalIsOpen,
-				editJobDetailsIsOpen: action.editJobDetailsIsOpen
+				editJobDetailsIsOpen: action.editJobDetailsIsOpen,
+				updateActivityIsOpen: action.updateActivityIsOpen
 			}
 
 		case types.OPEN_ADD_MODAL:
@@ -53,20 +55,35 @@ function myJobsGrid(state = initialState, action){
 			return {
 				...state,
 				editJobDetailsIsOpen: action.editJobDetailsIsOpen,
-				addActivityIsOpen: action.addActivityIsOpen,
+				updateActivityIsOpen: action.updateActivityIsOpen,
 				currJob: action.currJob
 			}
 
-		case types.OPEN_ADD_ACTIVITY:
+		case types.OPEN_UPDATE_ACTIVITY:
 			return {
 				...state,
-				addActivityIsOpen: action.addActivityIsOpen
+				updateActivityIsOpen: action.updateActivityIsOpen,
+				updateActivity: action.updateActivity
 			}
 
-		case types.CLOSE_ADD_ACTIVITY:
+		case types.CLOSE_UPDATE_ACTIVITY:
 			return {
 				...state,
-				addActivityIsOpen: action.addActivityIsOpen
+				updateActivityIsOpen: action.updateActivityIsOpen
+			}
+
+		case types.EDIT_ACTIVITY_SUCCESS:
+			return {
+				...state,
+				currJob: action.currJob,
+				updateActivityIsOpen: action.updateActivityIsOpen,
+				updateActivity: action.updateActivity
+			}
+
+		case types.DELETE_ACTIVITY_SUCCESS:
+			return {
+				...state,
+				currJob: action.currJob
 			}
 
 		default:

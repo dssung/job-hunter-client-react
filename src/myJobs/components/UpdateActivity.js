@@ -5,15 +5,33 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 
-class AddActivity extends React.Component {
+class UpdateActivity extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {
+
+		if (this.props.updateActivity){
+			let activity = this.props.updateActivity[1];
+			
+			this.state = {
+				header: 'Update Activity',
+				updateLabel: 'Update',
 				activity: {
-						activity_type: 'EMAIL',
-						date: '',
-						notes: '',
-					}
+					_id: activity._id,
+					activity_type: activity.activity_type,
+					date: activity.date,
+					notes: activity.notes
+				}
+			}
+		} else {
+			this.state = {
+				header: 'Add Activity',
+				updateLabel: 'Add',
+				activity: {
+					activity_type: 'EMAIL',
+					date: Date.now(),
+					notes: '',
+				}
+			}
 		}
 	}
 
@@ -21,10 +39,18 @@ class AddActivity extends React.Component {
 		this.setState({
 			activity: {
 				activity_type: 'EMAIL',
-				date: '',
+				date: Date.now(),
 				notes: '',
 			}
 		});
+	}
+
+	handleUpdateClick(job, activity, clearFields){
+		if (this.props.updateActivity){
+			this.props.handleUpdateClick(job, activity, clearFields);
+		} else {
+			this.props.handleAddClick(job, activity, clearFields);
+		}
 	}
 	
 	handleChange(name){
@@ -43,12 +69,12 @@ class AddActivity extends React.Component {
 	
   
 	render(){
-    let {activity_type, date, notes} = this.state.activity;
+		let {activity_type, date, notes} = this.state.activity;
       return (
           <Card>
 						
 						<CardContent>
-							<h3>Add Activity</h3>
+							<h3>{this.state.header}</h3>
 							<div className = 'modal-body'>
                 <TextField
 									select
@@ -66,7 +92,8 @@ class AddActivity extends React.Component {
 								<TextField
 									label = 'Date'
 									type = 'date'
-									value = {this.date}
+									value = {this.state.date}
+									onChange = {this.handleChange.bind(this, 'date')}
 									InputLabelProps={{
 										shrink: true,
 									}}
@@ -77,7 +104,7 @@ class AddActivity extends React.Component {
 									label = 'Notes'
 									variant="outlined"
 									margin = 'normal'
-									rows = {3}
+									rows = {13}
 									value = {notes}
 									onChange = {this.handleChange.bind(this, 'notes')}
 								>
@@ -90,9 +117,11 @@ class AddActivity extends React.Component {
 								variant='contained' 
 								color='primary'
 								className = 'modal-button'
-								onClick = {() => this.props.handleAddClick(this.state.activity, this.props.job, this.clearFields.bind(this))}
+								onClick = {() => this.handleUpdateClick(this.props.job, this.state.activity, this.clearFields.bind(this))}
 							>
-							Add
+								<div>
+								{this.state.updateLabel}
+								</div>
 							</Button>
 
 							<Button 
@@ -110,4 +139,4 @@ class AddActivity extends React.Component {
 	}
 
 
-export default hot(module)(AddActivity);
+export default hot(module)(UpdateActivity);
