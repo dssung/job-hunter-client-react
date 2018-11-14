@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
 		handleJobTileClick: (job) => {
 				dispatch(openJobModal(job))
 		},
-
+		
 		handleAddTileClick: () => {
 			dispatch(openAddModal())
 		}

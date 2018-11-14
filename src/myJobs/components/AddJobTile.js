@@ -12,9 +12,9 @@ class AddJobTile extends React.Component {
 				onClick = {this.props.onClick}
 			>
 				<Button 
-					mini variant='fab' 
-					color='primary' 
-					aria-label='Add'
+					mini variant = 'fab' 
+					color = 'primary' 
+					aria-label = 'Add'
 				>
 					<AddIcon/>
 				</Button>

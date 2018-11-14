@@ -1,9 +1,7 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-import {Card, CardContent, Button, Icon, CardActions,TextField, MenuItem} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
+import moment from 'moment';
+import {Card, CardContent, Button, CardActions,TextField, MenuItem} from '@material-ui/core';
 
 class UpdateActivity extends React.Component {
 	constructor(props){
@@ -62,81 +60,77 @@ class UpdateActivity extends React.Component {
 		let updateActivity = this.state.activity;
 		updateActivity[name] = newValue;
 		
-		this.setState({
-			activity: updateActivity
-		});
+		this.setState({activity: updateActivity});
 	}
 	
-  
 	render(){
+		let updateLabel = this.state.updateLabel;
+		let header = this.state.header;
 		let {activity_type, date, notes} = this.state.activity;
       return (
-          <Card>
-						
-						<CardContent>
-							<h3>{this.state.header}</h3>
-							<div className = 'modal-body'>
-                <TextField
-									select
-									label = 'Activity Type'
-                  margin = 'normal'
-									value = {activity_type}
-									onChange = {this.handleChange.bind(this, 'activity_type')}
-								>
-										<MenuItem value = {'EMAIL'}>Email</MenuItem>
-										<MenuItem value = {'PHONE_CALL'}>Phone Call</MenuItem>
-										<MenuItem value = {'PHONE_INTERVIEW'}>Phone Interview</MenuItem>
-										<MenuItem value = {'ONSITE_INTERVIEW'}>Onsite Interview</MenuItem>
-								</TextField>
-
-								<TextField
-									label = 'Date'
-									type = 'date'
-									value = {this.state.date}
-									onChange = {this.handleChange.bind(this, 'date')}
-									InputLabelProps={{
-										shrink: true,
-									}}
-								/>
-								
-                <TextField
-									multiline
-									label = 'Notes'
-									variant="outlined"
-									margin = 'normal'
-									rows = {13}
-									value = {notes}
-									onChange = {this.handleChange.bind(this, 'notes')}
-								>
-								</TextField>
-							</div>
-						</CardContent>
-
-						<CardActions>
-								<Button 
-								variant='contained' 
-								color='primary'
-								className = 'modal-button'
-								onClick = {() => this.handleUpdateClick(this.props.job, this.state.activity, this.clearFields.bind(this))}
+				<Card>
+					<CardContent>
+						<h3>{header}</h3>
+						<div className = 'modal-body'>
+							<TextField
+								select
+								label = 'Activity Type'
+								margin = 'normal'
+								value = {activity_type}
+								onChange = {this.handleChange.bind(this, 'activity_type')}
 							>
-								<div>
-								{this.state.updateLabel}
-								</div>
-							</Button>
+									<MenuItem value = {'EMAIL'}>Email</MenuItem>
+									<MenuItem value = {'PHONE_CALL'}>Phone Call</MenuItem>
+									<MenuItem value = {'PHONE_INTERVIEW'}>Phone Interview</MenuItem>
+									<MenuItem value = {'ONSITE_INTERVIEW'}>Onsite Interview</MenuItem>
+							</TextField>
 
-							<Button 
-									variant='contained' 
-									color='secondary'
-									className = 'modal-button'
-									onClick = {this.props.handleCancelClick}
-								>
-									Cancel
-							</Button>
-						</CardActions>
-					</Card>
+							<TextField
+								label = 'Date'
+								type = 'date'
+								value = {moment.utc(date).format('YYYY-MM-DD').toString()}
+								onChange = {this.handleChange.bind(this, 'date')}
+								InputLabelProps={{
+									shrink: true
+								}}
+							/>
+							
+							<TextField
+								multiline
+								label = 'Notes'
+								variant = 'outlined'
+								margin = 'normal'
+								rows = {13}
+								value = {notes}
+								onChange = {this.handleChange.bind(this, 'notes')}
+							/>
+						</div>
+					</CardContent>
+
+					<CardActions>
+						<Button 
+							variant = 'contained' 
+							color = 'primary'
+							className = 'modal-button'
+							onClick = {() => this.handleUpdateClick(this.props.job, this.state.activity, this.clearFields.bind(this))}
+						>
+							<div>
+								{updateLabel}
+							</div>
+						</Button>
+
+						<Button 
+							variant = 'contained' 
+							color = 'secondary'
+							className = 'modal-button'
+							onClick = {this.props.handleCancelClick}
+						>
+							Cancel
+						</Button>
+					</CardActions>
+				</Card>
       )
     }
 	}
-
 
 export default hot(module)(UpdateActivity);

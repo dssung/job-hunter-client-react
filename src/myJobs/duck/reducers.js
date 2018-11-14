@@ -12,18 +12,15 @@ const initialState = {
 
 function myJobsGrid(state = initialState, action){
 	switch(action.type){
-		case types.CLOSE_ADD_MODAL:
+
+		//Job Modal
+		case types.OPEN_JOB_MODAL:
 			return {
 				...state,
-				addModalIsOpen: action.addModalIsOpen
+				jobModalIsOpen: action.modal.jobModalIsOpen,
+				currJob: action.modal.currJob
 			}
 
-		case types.CLOSE_EDIT_JOB_DETAILS:
-			return{
-				...state,
-				editJobDetailsIsOpen: action.editJobDetailsIsOpen
-			}
-		
 		case types.CLOSE_JOB_MODAL:
 			return {
 				...state,
@@ -31,24 +28,31 @@ function myJobsGrid(state = initialState, action){
 				editJobDetailsIsOpen: action.editJobDetailsIsOpen,
 				updateActivityIsOpen: action.updateActivityIsOpen
 			}
-
+		
+		//Add Modal
 		case types.OPEN_ADD_MODAL:
 			return {
 				...state,
 				addModalIsOpen: action.addModalIsOpen
 			}
 
-		case types.OPEN_EDIT_JOB_DETAILS:
-		return{
-			...state,
-			editJobDetailsIsOpen: action.editJobDetailsIsOpen
-		}
-		
-		case types.OPEN_JOB_MODAL:
+		case types.CLOSE_ADD_MODAL:
 			return {
 				...state,
-				jobModalIsOpen: action.modal.jobModalIsOpen,
-				currJob: action.modal.currJob
+				addModalIsOpen: action.addModalIsOpen
+			}
+		
+		//Edit Job Details
+		case types.OPEN_EDIT_JOB_DETAILS:
+			return{
+				...state,
+				editJobDetailsIsOpen: action.editJobDetailsIsOpen
+			}
+		
+		case types.CLOSE_EDIT_JOB_DETAILS:
+			return{
+				...state,
+				editJobDetailsIsOpen: action.editJobDetailsIsOpen
 			}
 
 		case types.SAVE_JOB_DETAILS:
@@ -58,7 +62,8 @@ function myJobsGrid(state = initialState, action){
 				updateActivityIsOpen: action.updateActivityIsOpen,
 				currJob: action.currJob
 			}
-
+		
+		//Update Activity
 		case types.OPEN_UPDATE_ACTIVITY:
 			return {
 				...state,
@@ -72,7 +77,7 @@ function myJobsGrid(state = initialState, action){
 				updateActivityIsOpen: action.updateActivityIsOpen
 			}
 
-		case types.EDIT_ACTIVITY_SUCCESS:
+		case types.SAVE_UPDATE_ACTIVITY:
 			return {
 				...state,
 				currJob: action.currJob,

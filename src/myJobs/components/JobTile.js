@@ -1,8 +1,6 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-import moment from 'moment';
-import {Card, CardContent, CardActionArea, Divider, Chip, Select, MenuItem} from '@material-ui/core';
-import CalendarIcon from '@material-ui/icons/CalendarToday';
+import {Card, CardContent, CardActionArea} from '@material-ui/core';
 
 class JobTile extends React.Component{
 	constructor(props){
@@ -16,7 +14,8 @@ class JobTile extends React.Component{
 			<>
 				<Card 
 					className = 'tile-body'
-					onClick = {this.props.onClick}> 
+					onClick = {this.props.onClick}
+				> 
 					
 					<CardContent>
 						<h4 className = 'tile-title'>
@@ -29,9 +28,7 @@ class JobTile extends React.Component{
 					<CardActionArea
 					style = {{backgroundColor: 'rgba(74, 94, 206, 0.4)'}}>
 						<div className = 'tile-footer'>
-							<h3>
-								Last Activity 
-							</h3>
+							<h3>Last Activity</h3>
 						</div>
 					</CardActionArea>
 				</Card>

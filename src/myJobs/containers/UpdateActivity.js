@@ -6,7 +6,6 @@ const mapStateToProps = store => {
 	return {
     job: store.myJobsPage.myJobsGrid.currJob,
 		open: store.myJobsPage.myJobsGrid.addActivityModalIsOpen,
-		isEdit: store.myJobsPage.myJobsGrid.updateActivityIsEdit,
 		updateActivity: store.myJobsPage.myJobsGrid.updateActivity
 	}
 }
@@ -20,8 +19,8 @@ const mapDispatchToProps = dispatch => {
 		handleAddClick: (job, activity, clearFields) => {
 			let updatedJob = Object.assign({}, job);
 			updatedJob.activity_log.push(activity);
-			clearFields();
 			dispatch(saveAndUpdate(job._id, updatedJob));
+			clearFields();
 		},
 
 		handleUpdateClick: (job, activity, clearFields) => {
@@ -30,7 +29,6 @@ const mapDispatchToProps = dispatch => {
 		}
 	}
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateActivity);
 

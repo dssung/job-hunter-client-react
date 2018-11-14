@@ -7,14 +7,13 @@ import EditJobDetails from '../containers/EditJobDetails';
 import JobActivityLog from '../containers/JobActivityLog';
 
 class JobModal extends React.Component {
+	
 	renderJobDetails(){
 		if (this.props.editJobDetailsIsOpen){
 			return <EditJobDetails job = {this.props.job}/>
-		} else {
-			return (
-				<JobDetails job = {this.props.job}/>
-			)
 		}
+		
+		return <JobDetails job = {this.props.job}/>
 	}
 	
 	render(){
@@ -42,7 +41,6 @@ class JobModal extends React.Component {
 
 						<div className = 'modal-grid'>
 							{this.renderJobDetails()}
-
 							<JobActivityLog/>
 						</div>
 					</Card>

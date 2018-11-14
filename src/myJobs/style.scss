@@ -1,7 +1,7 @@
 .my-jobs-container {
     display: grid;
     height: 100%;
-    grid-template-columns: repeat(auto-fit, 200px);  
+    grid-template-columns: repeat(auto-fit, 300px);  
     grid-gap: 10px;
     margin-top: 10px;
     margin-left: 10px;
@@ -52,7 +52,7 @@ body{
     justify-content: space-between
 }
 
-.edit-button {
+.header-button {
     position: relative;
     top: 10px;
     left: 10px;

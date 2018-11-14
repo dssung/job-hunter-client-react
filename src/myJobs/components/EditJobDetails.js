@@ -24,9 +24,7 @@ class EditJobDetails extends React.Component{
 		let updateJob = this.state.job;
 		updateJob[name] = newValue;
 		
-		this.setState({
-			job: updateJob
-		});
+		this.setState({job: updateJob});
 	}
 
 	render(){
@@ -34,7 +32,6 @@ class EditJobDetails extends React.Component{
 
 		return (
 			<CardContent>
-
 				<div className = 'modal-body'>
 					<TextField
 						label = 'Company'
@@ -61,7 +58,7 @@ class EditJobDetails extends React.Component{
 						multiline
 						label = 'Notes'
 						value = {notes}
-						variant="outlined"
+						variant = 'outlined'
 						margin = 'normal'
 						rows = {3}
 						onChange = {this.handleChange.bind(this, 'notes')}>
@@ -119,8 +116,6 @@ class EditJobDetails extends React.Component{
 					>
 						Delete
 					</Button>
-
-					
 				</CardActions>
 			</CardContent>
 		);

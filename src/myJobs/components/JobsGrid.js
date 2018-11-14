@@ -16,9 +16,9 @@ class JobsGrid extends React.Component{
 
 			tiles.push(
 				<JobTile
-						key = {i}
-						job = {job}
-						onClick = {() => this.props.handleJobTileClick(job)}
+					key = {i}
+					job = {job}
+					onClick = {() => this.props.handleJobTileClick(job)}
 				/>
 			);
 		}
@@ -29,10 +29,10 @@ class JobsGrid extends React.Component{
 		return (
 			<>
 				<div className = 'my-jobs-container'>
-						{this.renderTiles()}	
-						<AddJobTile
-							onClick = {this.props.handleAddTileClick}
-						/>		
+					{this.renderTiles()}	
+					<AddJobTile
+						onClick = {this.props.handleAddTileClick}
+					/>		
 				</div>
 				
 				<JobModal/>

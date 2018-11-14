@@ -21,7 +21,6 @@ class JobDetails extends React.Component{
 								/>
 			skillChips.push(chip);
 		}
-
 		return skillChips;
 	}
 
@@ -44,7 +43,7 @@ class JobDetails extends React.Component{
 						variant = 'fab' 
 						color = 'secondary' 
 						aria-label = 'Edit'
-						className = 'edit-button'
+						className = 'header-button'
 						onClick = {this.props.handleEditClick}
 					>
 						<Icon><EditIcon/></Icon>
@@ -54,7 +53,6 @@ class JobDetails extends React.Component{
 				<Divider/>
 
 				<div className = 'modal-body'>
-
 					<div className = 'notes'>
 						<h4>Notes: </h4>
 						<p>{notes}</p>
@@ -71,7 +69,7 @@ class JobDetails extends React.Component{
 					<Select 
 						onChange = {() => this.props.handleSelectChange(this.props.job)} 
 						value = {status}
-						input={
+						input = {
               <OutlinedInput
                 labelWidth = {0}
               />}
@@ -82,7 +80,6 @@ class JobDetails extends React.Component{
 						<MenuItem value = {'REJECTED'}>Rejected</MenuItem>
 					</Select>
 				</div>
-
 			</CardContent>
 		);
 	}

@@ -22,13 +22,12 @@ class ApiClient {
 		return apiClient.delete(`/jobs/${_id}`);
 	}
 
+	//Activity
 	static deleteActivity(jobId, activityId){
 		return apiClient.delete(`jobs/${jobId}/activity/${activityId}`);
 	}
 
 	static editActivity(jobId, activityId, updatedActivity){
-		console.log(updatedActivity);
-		console.log(activityId);
 		return apiClient.put(`jobs/${jobId}/activity/${activityId}`, updatedActivity);
 	}
 }

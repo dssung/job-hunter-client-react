@@ -15,12 +15,12 @@ const mapDispatchToProps = dispatch => {
 			dispatch(openUpdateActivity(null, null))
 		},
 		
-		handleDeleteClick: (job, activity) => {
-			dispatch(deleteActivityAndUpdate(job, activity))
-		},
-
 		handleEditClick: (job, activity) => {
 			dispatch(openUpdateActivity(job, activity))
+		},
+		
+		handleDeleteClick: (job, activity) => {
+			dispatch(deleteActivityAndUpdate(job, activity))
 		}
 	}
 }
