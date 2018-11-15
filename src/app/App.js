@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react";
 import {hot} from "react-hot-loader";
-import JobsGrid from '../myJobs/containers/JobsGrid';
+import JobsGrid from '../myJobs/JobsGrid/containers/JobsGrid';
 import Navbar from '../common/Navbar';
 import './style.scss';
 

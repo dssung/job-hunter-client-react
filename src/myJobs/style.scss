@@ -16,17 +16,12 @@
     align-items: center;
 }
 
-body{
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-}
-
 //tile
-
-.tile-title{
+.tile-title {
     margin-bottom: 2%;
 }
 
-.tile-subtitle{
+.tile-subtitle {
     font-size: 13px;
 }
 
@@ -43,6 +38,18 @@ body{
 }
 
 //Modal
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
 .title {
     color: white;
 }
@@ -57,17 +64,6 @@ body{
     position: relative;
     top: 10px;
     left: 10px;
-}
-
-.modal-grid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
 }
 
 .modal-button {

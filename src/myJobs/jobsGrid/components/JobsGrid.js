@@ -2,9 +2,9 @@ import React from 'react';
 import {hot} from 'react-hot-loader';
 import JobTile from './JobTile';
 import AddJobTile from './AddJobTile';
-import JobModal from '../containers/JobModal';
+import JobModal from '../../JobModal/containers/JobModal';
 import AddModal from '../containers/AddModal';
-import '../style.scss';
+import '../../style.scss';
 
 class JobsGrid extends React.Component{
 	renderTiles(){

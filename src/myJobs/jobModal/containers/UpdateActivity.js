@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {closeUpdateActivity, saveAndUpdate, editActivityAndUpdate} from '../duck/actions';
+import {closeUpdateActivity, saveAndUpdate, editActivityAndUpdate} from '../../duck/actions';
 import UpdateActivity from '../components/UpdateActivity';
 
 const mapStateToProps = store => {

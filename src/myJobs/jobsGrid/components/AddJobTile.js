@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import {hot} from 'react-hot-loader';
-import '../style.scss';
+import '../../style.scss';
 
 class AddJobTile extends React.Component {
 

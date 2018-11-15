@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import EditJobDetails from '../components/EditJobDetails';
-import {closeEditJobDetails, deleteJobAndUpdate, saveAndUpdate} from '../duck/actions';
+import {closeEditJobDetails, deleteJobAndUpdate, saveAndUpdate} from '../../duck/actions';
 
 const mapStateToProps = store => {
 	return {

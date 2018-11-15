@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import JobActivityLog from '../components/JobActivityLog';
-import {openUpdateActivity, deleteActivityAndUpdate} from '../duck/actions';
+import {openUpdateActivity, deleteActivityAndUpdate} from '../../duck/actions';
 
 const mapStateToProps = store => {
 	return {

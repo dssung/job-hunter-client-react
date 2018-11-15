@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import JobsGridComponent from '../components/JobsGrid';
-import {openJobModal, openAddModal} from '../duck/actions';
+import {openJobModal, openAddModal} from '../../duck/actions';
 
 const mapStateToProps = store => {
 	return {

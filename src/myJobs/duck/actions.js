@@ -23,7 +23,6 @@ export function closeAddModal(){
   return {type: types.CLOSE_ADD_MODAL, addModalIsOpen: false}
 }
 
-
 //JobDetails Actions
 export function openEditJobDetails(){
   return {type: types.OPEN_EDIT_JOB_DETAILS, editJobDetailsIsOpen: true}
