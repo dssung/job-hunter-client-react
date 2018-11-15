@@ -36,10 +36,11 @@ body{
 }
 
 .tile-footer {
+    text-align: right;
+    color: white;
     position: relative;
-    left: 10%;
+    right: 5%;
 }
-
 
 //Modal
 .title {
@@ -103,5 +104,24 @@ small{
     display: grid;
     grid-template-columns: 30% 70%
 
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-row-field{
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 47%;
+}
+
+.sm-input-field {
+    width: 45%;
+}
+
+.lg-input-field{
+    width: 75%
 }
 

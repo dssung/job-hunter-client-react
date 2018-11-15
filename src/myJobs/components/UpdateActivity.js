@@ -25,7 +25,7 @@ class UpdateActivity extends React.Component {
 				header: 'Add Activity',
 				updateLabel: 'Add',
 				activity: {
-					activity_type: 'EMAIL',
+					activity_type: 'EMAIL_RECEIVED',
 					date: Date.now(),
 					notes: '',
 				}
@@ -36,7 +36,7 @@ class UpdateActivity extends React.Component {
 	clearFields(){
 		this.setState({
 			activity: {
-				activity_type: 'EMAIL',
+				activity_type: 'EMAIL_RECEIVED',
 				date: Date.now(),
 				notes: '',
 			}
@@ -79,28 +79,28 @@ class UpdateActivity extends React.Component {
 								value = {activity_type}
 								onChange = {this.handleChange.bind(this, 'activity_type')}
 							>
-									<MenuItem value = {'EMAIL'}>Email</MenuItem>
+									<MenuItem value = {'EMAIL_RECEIVED'}>Email Received</MenuItem>
 									<MenuItem value = {'PHONE_CALL'}>Phone Call</MenuItem>
+									<MenuItem value = {'FOLLOWED_UP'}>Followed Up</MenuItem>
 									<MenuItem value = {'PHONE_INTERVIEW'}>Phone Interview</MenuItem>
 									<MenuItem value = {'ONSITE_INTERVIEW'}>Onsite Interview</MenuItem>
+									<MenuItem value = {'OFFER'}>Offer</MenuItem>
 							</TextField>
 
 							<TextField
 								label = 'Date'
 								type = 'date'
+								InputLabelProps={{ shrink: true }}
 								value = {moment.utc(date).format('YYYY-MM-DD').toString()}
 								onChange = {this.handleChange.bind(this, 'date')}
-								InputLabelProps={{
-									shrink: true
-								}}
 							/>
 							
 							<TextField
 								multiline
+								rows = {13}
 								label = 'Notes'
 								variant = 'outlined'
 								margin = 'normal'
-								rows = {13}
 								value = {notes}
 								onChange = {this.handleChange.bind(this, 'notes')}
 							/>
@@ -114,9 +114,7 @@ class UpdateActivity extends React.Component {
 							className = 'modal-button'
 							onClick = {() => this.handleUpdateClick(this.props.job, this.state.activity, this.clearFields.bind(this))}
 						>
-							<div>
-								{updateLabel}
-							</div>
+							{updateLabel}
 						</Button>
 
 						<Button 

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import {Modal, CardHeader, CardActions, CardContent, Button, Card, TextField, MenuItem} from '@material-ui/core';
 import {hot} from 'react-hot-loader';
 
@@ -7,6 +8,7 @@ class AddModal extends React.Component {
 		super(props);
 		this.state = {
 			job: {
+					applied_date: '',
 					company: '',
 					position: '',
 					location: '',
@@ -18,6 +20,7 @@ class AddModal extends React.Component {
 	clearFields(){
 		this.setState({
 			job: {
+					applied_date: '',
 					company: '',
 					position: '',
 					location: '',
@@ -38,12 +41,31 @@ class AddModal extends React.Component {
 		this.setState({job: updateJob});
 	}
 
+	renderAppliedDate(){
+		let job = this.state.job;
+		if (job.status === 'APPLIED'){
+			return (
+				<TextField
+					label = 'Date Applied'
+					margin = 'normal'
+					type = 'date'
+					value = {moment.utc(job.applied_date).format('YYYY-MM-DD').toString()}
+					onChange = {this.handleChange.bind(this, 'applied_date')}
+					InputLabelProps={{
+						shrink: true
+					}}
+				/>
+			)
+		}
+		return <></>
+	}
+
 	render(){
 		let job = this.state.job;
 		return (
 			<Modal 
 				open = {this.props.open}
-				style = {{top: '20%', left: '5%', right: '5%', margin: 'auto', alignItems:'center', justifyContent: 'center'}}
+				style = {{top: '10%', left: '5%', right: '5%', margin: 'auto', alignItems:'center', justifyContent: 'center'}}
 			>			
 				<Card>
 					<CardHeader
@@ -75,9 +97,17 @@ class AddModal extends React.Component {
 							/>
 
 							<TextField
+								label = 'Job Description URL'
+								margin = 'normal'
+								helperText = 'Include https://'
+								value = {job.url}
+								onChange = {this.handleChange.bind(this, 'url')}
+							/>
+
+							<TextField
 								select
-								label='Status'
-								margin='normal'
+								label = 'Status'
+								margin = 'normal'
 								value = {job.status}
 								onChange = {this.handleChange.bind(this, 'status')}
 							>
@@ -86,22 +116,24 @@ class AddModal extends React.Component {
 									<MenuItem value = {'IN_PROGRESS'}>In Progress</MenuItem>
 									<MenuItem value = {'REJECTED'}>Rejected</MenuItem>
 							</TextField>
+							
+							{this.renderAppliedDate()}
 						</div>
 					</CardContent>
 
 					<CardActions>
 							<Button 
-							variant='contained' 
-							color='primary'
-							className = 'modal-button'
-							onClick = {() => this.props.handleAddClick(this.state.job, this.clearFields.bind(this))}
-						>
-							Add Job
-						</Button>
+								variant = 'contained' 
+								color = 'primary'
+								className = 'modal-button'
+								onClick = {() => this.props.handleAddClick(this.state.job, this.clearFields.bind(this))}
+							>
+								Add Job
+							</Button>
 
 						<Button 
-								variant='contained' 
-								color='secondary'
+								variant = 'contained' 
+								color = 'secondary'
 								className = 'modal-button'
 								onClick = {() => this.props.handleCancelClick(this.clearFields.bind(this))}
 							>

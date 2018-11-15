@@ -1,11 +1,33 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-import {CardContent, Select, MenuItem, Button, Icon, OutlinedInput, Chip, Divider} from '@material-ui/core';
+import moment from 'moment';
+import {CardContent, Paper, Button, Chip} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import CalendarIcon from '@material-ui/icons/EventTwoTone'
+import InfoIcon from '@material-ui/icons/InfoOutlined'
+import LinkIcon from '@material-ui/icons/Link'
+
 
 class JobDetails extends React.Component{
 	constructor(props){
 		super(props);
+	}
+
+	formatStatusType(str){
+    str = str.replace(/_/, ' ').toLowerCase().split(' ');
+
+    for (let i in str) {
+        str[i] = str[i].charAt(0).toUpperCase() + str[i].substring(1);     
+    }
+
+    return str.join(' '); 
+	}
+	
+	openJobLink(url) {
+		if (url){
+			var win = window.open(url, '_blank');
+			win.focus();
+		}
 	}
 
 	renderSkillChips(){
@@ -24,10 +46,19 @@ class JobDetails extends React.Component{
 		return skillChips;
 	}
 
+	renderAppliedOnLabel(applied_date){
+		if (applied_date){
+			return 'Applied on ' + moment.utc(applied_date).format('YYYY-MM-DD').toString();
+		} else {
+			return 'Not Applied'
+		}
+	}
+
 	render(){
-		let {company, position, location, status, notes, link}  = this.props.job;
+		let {company, position, location, status, notes, applied_date, url}  = this.props.job;
 		
 		return (
+			<Paper>
 			<CardContent>
 				<div className = 'job-detail-header'>
 					<div>
@@ -38,6 +69,7 @@ class JobDetails extends React.Component{
 							<small className = 'location'><i>{location}</i></small>
 						</h3>
 					</div>
+
 					<Button 
 						mini 
 						variant = 'fab' 
@@ -46,15 +78,39 @@ class JobDetails extends React.Component{
 						className = 'header-button'
 						onClick = {this.props.handleEditClick}
 					>
-						<Icon><EditIcon/></Icon>
+						<EditIcon/>
 					</Button>
 				</div>
 
-				<Divider/>
-
 				<div className = 'modal-body'>
+					<div className = 'chips-container'>
+						<Chip
+							variant = 'outlined'
+							icon = {<InfoIcon/>}
+							className = 'chip'
+							label = {this.formatStatusType(status)}
+						/>
+
+						<Chip
+							color = 'secondary'
+							variant = 'outlined'
+							icon = {<CalendarIcon/>}
+							className = 'chip'
+							label = {this.renderAppliedOnLabel(applied_date)}	
+						/>
+
+						<Chip
+							color = 'primary'
+							variant = 'outlined'
+							icon = {<LinkIcon/>}
+							className = 'chip'
+							label = {url ? 'More Info': 'Missing URL'}
+							onClick = {() => this.openJobLink(url)}
+						/>
+					</div>
+					
 					<div className = 'notes'>
-						<h4>Notes: </h4>
+						<h4>Notes:</h4>
 						<p>{notes}</p>
 					</div>
 
@@ -63,24 +119,9 @@ class JobDetails extends React.Component{
 					<div className = 'chips-container'>
 						{this.renderSkillChips()}
 					</div>
-				
-					<br/>
-
-					<Select 
-						onChange = {() => this.props.handleSelectChange(this.props.job)} 
-						value = {status}
-						input = {
-              <OutlinedInput
-                labelWidth = {0}
-              />}
-						>
-						<MenuItem value = {'INTERESTED'}>Interested</MenuItem>
-						<MenuItem value = {'APPLIED'}>Applied</MenuItem>
-						<MenuItem value = {'IN_PROGRESS'}>In Progress</MenuItem>
-						<MenuItem value = {'REJECTED'}>Rejected</MenuItem>
-					</Select>
 				</div>
 			</CardContent>
+			</Paper>
 		);
 	}
 }
