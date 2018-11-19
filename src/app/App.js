@@ -1,6 +1,7 @@
-import React, {PropTypes} from "react";
+import React from "react";
 import {hot} from "react-hot-loader";
-import JobsGrid from '../myJobs/JobsGrid/containers/JobsGrid';
+import MyJobsPage from '../myJobs/MyJobsPage/containers/MyJobsPage';
+import IndeedJobsPage from '../indeedJobs/containers/IndeedJobsPage';
 import Navbar from '../common/Navbar';
 import './style.scss';
 
@@ -9,7 +10,8 @@ class App extends React.Component{
     return (
       <div className = 'app'>
         <Navbar/>
-        <JobsGrid/>
+        {/*<IndeedJobsPage/>*/}
+        <MyJobsPage/>
       </div>
     );
   }

@@ -4,9 +4,9 @@ import {closeJobModal} from '../../duck/actions';
 
 const mapStateToProps = store => {
 	return {
-        job: store.myJobsPage.myJobsGrid.currJob,
-        open: store.myJobsPage.myJobsGrid.jobModalIsOpen,
-        editJobDetailsIsOpen: store.myJobsPage.myJobsGrid.editJobDetailsIsOpen
+        job: store.myJobsPage.currJob,
+        open: store.myJobsPage.jobModalIsOpen,
+        editJobDetailsIsOpen: store.myJobsPage.editJobDetailsIsOpen
     }
 }
 

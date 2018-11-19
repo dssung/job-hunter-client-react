@@ -6,7 +6,7 @@ import JobModal from '../../JobModal/containers/JobModal';
 import AddModal from '../containers/AddModal';
 import '../../style.scss';
 
-class JobsGrid extends React.Component{
+class MyJobsPage extends React.Component{
 	renderTiles(){
 		let tiles = [];
 		let jobs = this.props.jobs;
@@ -42,4 +42,4 @@ class JobsGrid extends React.Component{
 	} 
 }
 
-export default hot(module)(JobsGrid);
+export default hot(module)(MyJobsPage);

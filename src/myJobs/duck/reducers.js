@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import * as types from './actionTypes';
 
 const initialState = {
+	myJobs: [],
 	jobModalIsOpen: false,
 	currJob: null,
 	editJobDetailsIsOpen: false,
@@ -10,8 +11,14 @@ const initialState = {
 	updateActivity: null
 }
 
-function myJobsGrid(state = initialState, action){
+function myJobsPage(state = initialState, action){
 	switch(action.type){
+
+		case types.GET_MY_JOBS_SUCCESS:
+			return {
+				...state,
+				myJobs: action.jobs
+			}
 
 		//Job Modal
 		case types.OPEN_JOB_MODAL:
@@ -95,21 +102,6 @@ function myJobsGrid(state = initialState, action){
 			return state;
 	}
 }
-
-function myJobs(state = [], action){
-	switch(action.type){
-		case types.GET_MY_JOBS_SUCCESS:
-			return action.jobs
-		
-		default:
-			return state;
-	}
-}
-
-const myJobsPage = combineReducers({
-	myJobs,
-	myJobsGrid
-});
 
 export default myJobsPage;
 

@@ -4,9 +4,9 @@ import UpdateActivity from '../components/UpdateActivity';
 
 const mapStateToProps = store => {
 	return {
-    job: store.myJobsPage.myJobsGrid.currJob,
-		open: store.myJobsPage.myJobsGrid.addActivityModalIsOpen,
-		updateActivity: store.myJobsPage.myJobsGrid.updateActivity
+    job: store.myJobsPage.currJob,
+		open: store.myJobsPage.addActivityModalIsOpen,
+		updateActivity: store.myJobsPage.updateActivity
 	}
 }
 

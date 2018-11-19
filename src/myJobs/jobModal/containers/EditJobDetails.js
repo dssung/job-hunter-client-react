@@ -4,7 +4,7 @@ import {closeEditJobDetails, deleteJobAndUpdate, saveAndUpdate} from '../../duck
 
 const mapStateToProps = store => {
 	return {
-        job: store.myJobsPage.myJobsGrid.currJob
+        job: store.myJobsPage.currJob
 	}
 }
 

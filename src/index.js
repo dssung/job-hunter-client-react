@@ -14,6 +14,7 @@ const store = createStore(
 store.subscribe(() => console.log(store.getState()));
 store.dispatch(getMyJobs());
 
+
 ReactDOM.render(
 
 <Provider store = {store}>

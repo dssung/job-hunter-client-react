@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import JobsGridComponent from '../components/JobsGrid';
+import MyJobsPageComponent from '../components/MyJobsPage';
 import {openJobModal, openAddModal} from '../../duck/actions';
 
 const mapStateToProps = store => {
 	return {
 		jobs: store.myJobsPage.myJobs,
-		currJob: store.myJobsPage.myJobsGrid.currJob,
+		currJob: store.myJobsPage.currJob,
 	}
 }
 
@@ -21,5 +21,5 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(JobsGridComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(MyJobsPageComponent);
 

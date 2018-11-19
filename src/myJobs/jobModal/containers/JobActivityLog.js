@@ -4,8 +4,8 @@ import {openUpdateActivity, deleteActivityAndUpdate} from '../../duck/actions';
 
 const mapStateToProps = store => {
 	return {
-    job: store.myJobsPage.myJobsGrid.currJob,
-    updateActivityIsOpen: store.myJobsPage.myJobsGrid.updateActivityIsOpen
+    job: store.myJobsPage.currJob,
+    updateActivityIsOpen: store.myJobsPage.updateActivityIsOpen
   }
 }
 
