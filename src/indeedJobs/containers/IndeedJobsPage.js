@@ -1,17 +1,19 @@
 import {connect} from 'react-redux';
 import IndeedJobsPageComponent from '../components/IndeedJobsPage';
-//import {openJobModal, openAddModal} from '../../duck/actions';
+import {setCurrJob} from '../duck/actions';
 
 const mapStateToProps = store => {
 	return {
-		jobs: store.myJobsPage.myJobs,
-		currJob: store.myJobsPage.currJob,
+		jobs: store.indeedJobsPage.jobs,
+		currJob: store.indeedJobsPage.currJob,
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-
+		handleListItemClick: (job) => {
+			dispatch(setCurrJob(job))
+		}
 	}
 }
 

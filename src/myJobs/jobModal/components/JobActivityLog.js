@@ -89,7 +89,7 @@ class JobModal extends React.Component {
 
           <Divider/>
           
-          <div className = 'activity-log-body'>
+          <div className = 'overflow-list'>
             {this.renderActivityLog()}
           </div>
         </CardContent>

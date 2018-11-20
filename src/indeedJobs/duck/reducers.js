@@ -1,20 +1,39 @@
-import {combineReducers} from 'redux';
 import * as types from './actionTypes';
 
 const initialState = {
   jobs: [],
-  currJob: null
+  currJob: {
+    jobtitle:'',
+    company: ''
+  },
+  searchField: {
+    q: '',
+    fromage: 3,
+    l: '',
+    radius: 15,
+    sort: 'relevance'
+  },
 }
 
-function indeedJobs(state = initialState, action){
+function indeedJobsPage(state = initialState, action){
   switch(action.type){
+
+    case types.GET_JOBS_SUCCESS:
+      return {
+        ...state,
+        jobs: action.jobs,
+        currJob: action.jobs[0]
+      }
+
+    case types.SET_CURR_JOB:
+      return {
+        ...state,
+        currJob: action.job
+      }
+
     default:
       return state;
   }
 }
-
-const indeedJobsPage = combineReducers({
-  indeedJobs
-});
 
 export default indeedJobsPage;

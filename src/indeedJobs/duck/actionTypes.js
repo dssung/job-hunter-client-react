@@ -1,0 +1,2 @@
+export const GET_JOBS_SUCCESS = 'GET_JOBS_SUCCESS';
+export const SET_CURR_JOB = "SET_CURR_JOB";
