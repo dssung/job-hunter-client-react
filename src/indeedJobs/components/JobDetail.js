@@ -94,7 +94,7 @@ class JobDetail extends React.Component {
                 onClick = {() => this.handleClose()}
               >
                 <CloseIcon />
-              </IconButton>,
+              </IconButton>
             ]}
           />
         </Card>

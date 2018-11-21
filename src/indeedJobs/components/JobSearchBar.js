@@ -2,6 +2,7 @@ import React from 'react';
 import {hot} from 'react-hot-loader';
 import {TextField, InputAdornment, MenuItem, IconButton} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import LocationSearchInput from './LocationSearchInput';
 
 class JobSearchBar extends React.Component{
   constructor(props){
@@ -13,8 +14,11 @@ class JobSearchBar extends React.Component{
   }
 
   handleChange(name){
-		let newValue = event.target.value;
+    let newValue = event.target.value;
 
+    if (name === 'l')
+      newValue = event.target.value || event.target.innerText
+    
 		if (name === 'radius' || name === 'fromage' || name === 'sort')
       newValue = event.target.dataset.value;
 
@@ -22,11 +26,11 @@ class JobSearchBar extends React.Component{
     updateSearchField[name] = newValue;
 
     this.setState({ searchField: updateSearchField });
-    this.props.handleSearchClick(updateSearchField);
+    this.props.handleSearch(this.state.searchField)
 	}
 
   render(){
-    let {q, fromage, l, radius, sort} = this.state.searchField;
+    let {q, l, radius, sort, fromage} = this.state.searchField;
 
     return (
       <>
@@ -34,28 +38,29 @@ class JobSearchBar extends React.Component{
           variant = 'outlined'
           label = 'Search Jobs'
           type = 'search'
-          className = 'search-field'
           margin = 'normal'
+          className = 'search-field'
           value = {q}
+          onKeyPress = {(e) => {(e.key === 'Enter') ? this.props.handleSearch(this.state.searchField) : {}}}
           onChange = {this.handleChange.bind(this, 'q')}
           InputProps= {{
             endAdornment: (
               <InputAdornment variant = 'filled' position = 'end'>
                 <IconButton>
                   <SearchIcon
-                    onClick = {() => {this.props.handleSearchClick(this.state.searchField)}}/>
+                    onClick = {() => {this.props.handleSearch(this.state.searchField)}}/>
                 </IconButton>
               </InputAdornment>
-            ),
+            )
           }}
         />
 
         <TextField
-          variant = 'outlined'
           select
+          variant = 'outlined'
           label = 'Date Posted'
-          className = 'search-field'
           margin = 'normal'
+          className = 'search-field'
           value = {fromage}
           onChange = {this.handleChange.bind(this, 'fromage')}
         >
@@ -66,22 +71,17 @@ class JobSearchBar extends React.Component{
           <MenuItem value = {30}>Past Month</MenuItem>
         </TextField>
 
-          <TextField
-            variant = 'outlined'
-            label = 'Location'
-            type = 'search'
-            className = 'search-field'
-            margin = 'normal'
-            value = {l}
-            onChange = {this.handleChange.bind(this, 'l')}
-          />
+        <LocationSearchInput
+          value = {l}
+          onChange = {this.handleChange.bind(this, 'l')}
+        />
 
         <TextField
-          variant = 'outlined'
           select
+          variant = 'outlined'
           label = 'Range'
-          className = 'search-field'
           margin = 'normal'
+          className = 'search-field'
           value = {radius}
           onChange = {this.handleChange.bind(this, 'radius')}
         >
@@ -94,8 +94,8 @@ class JobSearchBar extends React.Component{
         </TextField>
 
         <TextField
-          variant = 'outlined'
           select
+          variant = 'outlined'
           label = 'Sort By'
           className = 'search-field'
           margin = 'normal'

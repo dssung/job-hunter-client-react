@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import UpdateActivity from '../containers/UpdateActivity';
 
-class JobModal extends React.Component {
+class JobActivityLog extends React.Component {
 
   formatActivityType(str){
     str = str.replace(/_/, ' ').toLowerCase().split(' ');
@@ -97,4 +97,4 @@ class JobModal extends React.Component {
   }
 }
 
-export default hot(module)(JobModal);
+export default hot(module)(JobActivityLog);

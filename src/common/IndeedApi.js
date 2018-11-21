@@ -12,6 +12,7 @@ class IndeedApi {
 					q: params.q,
 					l: params.l,
 					sort: params.sort,
+					start: params.start,
 					radius: params.radius,
 					fromage: params.fromage,
 			}

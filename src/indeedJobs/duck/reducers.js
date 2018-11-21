@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 
 const initialState = {
+  isLoading: false,
   jobs: [],
   currJob: {
     jobtitle:'',
@@ -8,10 +9,11 @@ const initialState = {
   },
   searchField: {
     q: '',
-    fromage: 3,
     l: '',
+    sort: 'relevance',
+    start: 0,
     radius: 15,
-    sort: 'relevance'
+    fromage: 3,
   },
 }
 
@@ -22,13 +24,35 @@ function indeedJobsPage(state = initialState, action){
       return {
         ...state,
         jobs: action.jobs,
-        currJob: action.jobs[0]
+        currJob: action.jobs[0],
+        searchField: action.params
       }
 
     case types.SET_CURR_JOB:
       return {
         ...state,
         currJob: action.job
+      }
+
+    case types.SHOW_MORE_JOBS_SUCCESS:
+      let jobs = Object.assign([], state.jobs);
+      jobs = jobs.concat(action.jobs);
+      
+      return {
+        ...state,
+        jobs: jobs
+      }
+
+    case types.START_LOADING:
+      return{
+        ...state,
+        isLoading: action.isLoading
+      }
+
+    case types.STOP_LOADING:
+      return {
+        ...state,
+        isLoading: action.isLoading
       }
 
     default:

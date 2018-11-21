@@ -28,7 +28,7 @@ class MyJobsPage extends React.Component{
 	render(){
 		return (
 			<>
-				<div className = 'my-jobs-container'>
+				<div className = 'my-jobs-grid'>
 					{this.renderTiles()}	
 					<AddJobTile
 						onClick = {this.props.handleAddTileClick}

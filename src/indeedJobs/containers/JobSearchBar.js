@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import JobSearchBarComponent from '../components/JobSearchBar';
-import {getJobs} from '../duck/actions';
+import {getJobs, startLoading} from '../duck/actions';
 
 const mapStateToProps = store => {
 	return {
@@ -11,12 +11,14 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-    handleSearchClick: (params) => {
-      if (params.fromage === 'All'){
-        params.fromage = '';
-      }
+    handleSearch: (params) => {
+      dispatch(startLoading());
       
-      dispatch(getJobs(params))
+      if (params.fromage === 'All')
+        params.fromage = '';
+
+      params.start = 0;
+      dispatch(getJobs(params));
     }
 	}
 }
