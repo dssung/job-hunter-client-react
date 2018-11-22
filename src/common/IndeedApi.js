@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'https://still-cove-99602.herokuapp.com',
+    baseURL: 'http://localhost:8000',
     timeout: 10000,
 });
 
