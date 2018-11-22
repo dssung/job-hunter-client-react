@@ -60,7 +60,7 @@ class JobDetails extends React.Component{
 		return (
 			<Paper>
 			<CardContent>
-				<div className = 'job-detail-header'>
+				<div className = 'modal-section-header'>
 					<div>
 						<h3>
 							{company}
@@ -75,7 +75,7 @@ class JobDetails extends React.Component{
 						variant = 'fab' 
 						color = 'secondary' 
 						aria-label = 'Edit'
-						className = 'header-button'
+						className = 'modal-header-button'
 						onClick = {this.props.handleEditClick}
 					>
 						<EditIcon/>
@@ -109,7 +109,7 @@ class JobDetails extends React.Component{
 						/>
 					</div>
 					
-					<div className = 'notes'>
+					<div className = 'modal-section-notes'>
 						<h4>Notes:</h4>
 						<p>{notes}</p>
 					</div>

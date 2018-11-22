@@ -39,7 +39,7 @@ class JobModal extends React.Component {
 							}
 						/>
 
-						<div className = 'modal-grid'>
+						<div className = 'job-modal-body'>
 							{this.renderJobDetails()}
 							<JobActivityLog/>
 						</div>

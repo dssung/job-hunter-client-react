@@ -73,14 +73,14 @@ class JobActivityLog extends React.Component {
     
     return (
         <CardContent>
-          <div className = 'job-detail-header'>
+          <div className = 'modal-section-header'>
 						<h3>Activity Log</h3>
             <Button 
               mini
               variant = 'fab' 
               color = 'primary' 
               aria-label = 'Add'
-              className = 'header-button'
+              className = 'modal-header-button'
               onClick = {this.props.handleAddClick}
             >
               <AddIcon/>

@@ -70,7 +70,7 @@ class AddModal extends React.Component {
 				<Card>
 					<CardHeader
 						style = {{backgroundColor: '#3f51b5'}}
-						title = {<div className = 'title'> Add New Job </div>}
+						title = {<div className = 'modal-title'> Add New Job </div>}
 					/>
 
 					<CardContent>
