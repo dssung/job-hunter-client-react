@@ -10,10 +10,7 @@ class LocationSearchInput extends React.Component{
        <PlacesAutocomplete
           value = {this.props.value}
           onChange = {this.props.onChange}
-          searchOptions = {{
-            types: ['(cities)'],
-            componentRestrictions: {country: 'us'}
-          }}
+          
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div>
