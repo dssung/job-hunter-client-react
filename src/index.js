@@ -11,7 +11,7 @@ const store = createStore(
     reducer,
     applyMiddleware(thunk)
 )
-store.subscribe(() => console.log(store.getState()));
+store.subscribe(() => {});
 store.dispatch(getMyJobs());
 
 
